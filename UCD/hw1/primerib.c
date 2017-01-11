@@ -1,10 +1,9 @@
 #include <stdio.h>
-#include <math.h>
 
 int main() {
 
-   float pounds =   0.0;
-   int hours =      2.0;
+   float pounds  =  0.0;
+   int hours     =  2.0;
    float minutes =  0.0;
    float seconds =  0.0;
 

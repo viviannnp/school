@@ -1,15 +1,18 @@
 #include <stdio.h>
-#include <math.h>
 
 int main() {
 
-   float wage = 0;
+   float hourlyWage = 0;
+   int dollars = 0;
+   int cents = 0;
 
    printf("What is your hourly wage? ");
-   scanf("%f", &wage);
+   scanf("%f", &hourlyWage);
 
-   printf("Your total income over a year is %d dollars and %d cents\n", (int)((wage * 40 * 52)+.5), (int)(((wage * 40 * 52) - floor(wage * 40 * 52))*100));
-   //printf("%f\n", 19.99*40*52);
-   //printf("%d\n", (int)((((19.99*40*52) - floor(19.99*40*52))*100)+.5));
+   dollars = (hourlyWage * 40 * 52) + 0.01;
+   cents = (((hourlyWage * 40.0 * 52.0) - dollars) * 100.0) + 0.5;
+
+   printf("Your total income over a year is %d dollars and %d cents\n", dollars, cents);
+
    return 0;
 }
