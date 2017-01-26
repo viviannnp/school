@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <ctype.h>
+#include <stdlib.h>
 
 int main() {
 
@@ -8,8 +9,9 @@ int main() {
   printf("Please enter a character: ");
   scanf("%c", &userInput);
 
-  if (isalnum(userInput) == 1) {
-    if (isupper(userInput) == 1) {
+  if (isalpha(userInput) > 0) {
+
+    if (isupper(userInput) > 0) {
       printf("The char is an uppercase letter.\n");
     }
     else {
@@ -36,16 +38,17 @@ int main() {
       break;
     }
   }
-  else if (isdigit(userInput) == 1) {
+
+  if (isdigit(userInput) > 0) {
     printf("The char is a digit.\n");
   }
-  else if (ispunct(userInput) == 1) {
-    printf("The char is a punctuation.\n");
+  if (ispunct(userInput) > 0) {
+    printf("The char is punctuation.\n");
   }
-  else if (userInput == '\t') {
+  if (userInput == '\t') {
     printf("The char is a tab.\n");
   }
-  else if (userInput == '\"') {
+  if (userInput == '\"') {
     printf("The char is a double quote\n");
   }
 
