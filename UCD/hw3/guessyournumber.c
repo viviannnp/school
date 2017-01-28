@@ -1,39 +1,47 @@
-/*
-  Line 22 adapted from:              http://stackoverflow.com/questions/9744909/while-loop-generating-printf-twice-before-asking-for-input
-*/
 #include <stdio.h>
 #include <ctype.h>
 
 int main(void) {
 
   int upperBound = 0;
-  int lowerBound = 0;
+  int lowerBound = 1;
   int numGuesses = 0;
   int currGuess  = 0;
-  int lastGuess  = 0;
   char lowHighOrEqual = '\0';
 
   printf("Enter n: ");
-
   if (scanf("%d", &upperBound) == 1 && upperBound >= 0) {
-    while (((upperBound - currGuess) / 2) != 0) {
+    currGuess = ((upperBound - lowerBound) / 2) + 1; //initial midpoint
+    while ((upperBound - lowerBound) > 0) {
 
-      ++numGuesses;
-      currGuess = upperBound / 2;
-      lastGuess = currGuess;
-
-      printf("Is your number %d?", currGuess);
+      printf("Is your number %d? ", currGuess);
       scanf(" %c", &lowHighOrEqual);
 
       if (lowHighOrEqual == 'e') {
+        ++numGuesses;
         break;
       }
       else if (lowHighOrEqual == 'l') {
-        currGuess = (upperBound - currGuess) / 2;
+        if (upperBound == currGuess) {
+          printf("Error: that's not possible.\n");
+          return 0;
+        }
+        lowerBound = currGuess + 1;
+        currGuess = lowerBound + ((upperBound - lowerBound) / 2.0);
       }
-      else if (lowHighOrEqual = 'h') {
-        currGuess
+      else if (lowHighOrEqual == 's'){
+        if (lowerBound == currGuess) {
+          printf("Error: that's not possible.\n");
+          return 0;
+        }
+        upperBound = currGuess - 1;
+        currGuess = upperBound - ((upperBound - lowerBound) / 2.0);
       }
+      else {
+        printf("Error: invalid input.\n");
+        return 0;
+      }
+      ++numGuesses;
     }
     printf("Your number must be %d. I used %d guesses.\n", currGuess, numGuesses);
   }

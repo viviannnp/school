@@ -67,6 +67,5 @@ int main() {
       printf("Error: you did not enter \'r\', \'p\', or \'s\'!\n");
    }
 
-
   return 0;
 }
