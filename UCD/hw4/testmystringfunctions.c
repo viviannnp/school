@@ -49,7 +49,32 @@ int main() {
 // prompt and return false.
 bool getAndRunTest() {
   // Homework TODO: complete the code for this function.
-  
+  char userInput[3] = {'\0', '\0', '\0'};
+
+  fgets(userInput, 3, stdin);
+  flushStdin();
+  printf("%c\n", userInput[0]);
+
+  if (userInput[0] == 1 || userInput[0] == 2 || userInput[0] == 3) {
+    switch (userInput[1]) {
+      case 'a':
+        return true;
+
+      case 'b':
+        return true;
+
+      case 'c':
+        return true;
+
+      default:
+        printf("Enter a, b, or c for the test case.\n");
+        return false;
+     }
+  }
+  else {
+    printf("Enter 1, 2, or 3 for the function to test.\n");
+    return false;
+  }
 }
 
 // Test n = 2 and src = "test string" returns "te"
@@ -111,6 +136,10 @@ void concatStrsTestC() {
 
 // Flush stdin buffer
 void flushStdin() {
-    // Homework TODO: see 1/30/17 lecture notes to understand what this
-    // function will do and how it should be written.
+  char c;
+  // Skip all characters until end-of-file marker
+  // or new line / carriage return
+  while ( (c = getchar()) != EOF &&
+          c != '\n' &&
+          c != '\r' ) {};
 }
