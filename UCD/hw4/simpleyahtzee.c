@@ -207,13 +207,13 @@ void printTotalScore(int categoryScores[NUM_FACES]) {
   // Total Score: 27
   int totScore = 0;
 
-  for (int i = 0; i < NUM_FACES - 1; i++) {
+  for (int i = 0; i < NUM_FACES; i++) {
      if (categoryScores[i] != -1) {
-        printf("Category %d score: %d\n", i, categoryScores[i]);
+        printf("Category %d score: %d\n", i + 1, categoryScores[i]);
         totScore += categoryScores[i];
      }
      else {
-        printf("Category %d score: not scored\n", i);
+        printf("Category %d score: n/a\n", i + 1);
      }
   }
   printf("Total Score: %d\n", totScore);
