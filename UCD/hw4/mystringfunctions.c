@@ -9,7 +9,6 @@
 // Example:
 // The result of deepCopyStr("great googly moogly", 6) is "great "
 char* deepCopyStr(char* src, int n) {
-  return NULL;
   // Error if a negative integer is passed
   if (n < 0) {
     return NULL;
@@ -28,7 +27,6 @@ char* deepCopyStr(char* src, int n) {
     result[i] = src[i];
   }
   result[n] = '\0';
-  result[0] = 'a';
   return result;
 }
 

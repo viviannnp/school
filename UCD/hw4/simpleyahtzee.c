@@ -51,6 +51,8 @@ int main() {
     scoreRound(dice, categoryScores);
   }
   printf("Game over.\n");
+
+  return 0;
 }
 
 //////////////////////////////////
