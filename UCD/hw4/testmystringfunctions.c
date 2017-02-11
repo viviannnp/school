@@ -40,6 +40,8 @@ int main() {
    printf("\tb) n = 5, str1 = \"\", str2 = \"test string\" returns \"test \"\n");
    printf("\tc) n = 5, str1 = \"test\", str2 = \"\" returns NULL\n");
    while (!getAndRunTest()) {}
+
+   return 0;
 }
 
 // Prompt user once for the test to run. 1a is deepCopyStrTestA,
