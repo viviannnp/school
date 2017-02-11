@@ -133,8 +133,8 @@ void deepCopyStrTestB() {
    // Homework TODO: write code for this test case according to the
    // specifications in the comment above the function.
    char* result = deepCopyStr("test string", 0);
-
-   assert(result == '\0');
+   printf("%s", result);
+   assert(result && result[0] == '\0');
    printf("Test successful.\n");
 }
 
@@ -160,7 +160,7 @@ void isLowerOrDigitStrTestA() {
 void isLowerOrDigitStrTestB() {
    // Homework TODO: write code for this test case according to the
    // specifications in the comment above the function.
-   assert(isLowerOrDigitStr("testString", 5));
+   assert(!isLowerOrDigitStr("testString", 5));
    printf("Test successful.\n");
 }
 
@@ -184,8 +184,7 @@ void concatStrsTestA() {
 void concatStrsTestB() {
    // Homework TODO: write code for this test case according to the
    // specifications in the comment above the function.
-   //assert(strcmp(concatStrs("", "test string", 5), "test") == 0);
-   assert(strcmp(concatStrs("", "test string", 5), "test") == 0);
+   assert(strcmp(concatStrs("", "test string", 5), "test ") == 0);
    printf("Test successful.\n");
 }
 
