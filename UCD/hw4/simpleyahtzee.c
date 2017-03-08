@@ -147,26 +147,26 @@ void scoreRound(int dice [NUM_DICE], int categoryScores[NUM_FACES]) {
   int categoryNum = 0;
 
   while(true) {
-     printf("Enter category to save score: ");
-     int scanfResult = scanf("%c", &categoryChoice);
-     flushStdin();
+    printf("Enter category to save score: ");
+    int scanfResult = scanf("%c", &categoryChoice);
+    flushStdin();
 
-   if (scanfResult == 1 && isdigit(categoryChoice) && (categoryNum = atoi(&categoryChoice)) > 0 && categoryNum <= 6
-       && categoryScores[categoryNum - 1] == -1) {
+    if (scanfResult == 1 && isdigit(categoryChoice) && (categoryNum = atoi(&categoryChoice)) > 0 && categoryNum <= 6
+    && categoryScores[categoryNum - 1] == -1) {
       categoryScores[categoryNum - 1] = 0;
       for (int i = 0; i < NUM_FACES - 1; i++) {
-         if (dice[i] == categoryNum) {
-            categoryScores[categoryNum - 1] += categoryNum;
-         }
+        if (dice[i] == categoryNum) {
+          categoryScores[categoryNum - 1] += categoryNum;
+        }
       }
       printTotalScore(categoryScores);
       break;
-   }
-   else {
+    }
+    else {
       printf("Error: invalid command. Enter 1-6 to save to an unused category\n");
       continue;
-   }
- }
+    }
+  }
 };
 
 ///////////////////////////////////////
@@ -183,12 +183,12 @@ void printRoundState(int dice[NUM_DICE], int rerollsLeft) {
   // Rolls left: 2
   printf("Dice: ");
   for (int i = 0; i < NUM_DICE; i++) {
-     if (i == NUM_DICE - 1) {
-        printf("%d\n", dice[i]);
-     }
-     else {
-        printf("%d ", dice[i]);
-     }
+    if (i == NUM_DICE - 1) {
+      printf("%d\n", dice[i]);
+    }
+    else {
+      printf("%d ", dice[i]);
+    }
   }
   printf("Rolls left: %d\n", rerollsLeft);
 }
@@ -208,13 +208,13 @@ void printTotalScore(int categoryScores[NUM_FACES]) {
   int totScore = 0;
 
   for (int i = 0; i < NUM_FACES; i++) {
-     if (categoryScores[i] != -1) {
-        printf("Category %d score: %d\n", i + 1, categoryScores[i]);
-        totScore += categoryScores[i];
-     }
-     else {
-        printf("Category %d score: n/a\n", i + 1);
-     }
+    if (categoryScores[i] != -1) {
+      printf("Category %d score: %d\n", i + 1, categoryScores[i]);
+      totScore += categoryScores[i];
+    }
+    else {
+      printf("Category %d score: n/a\n", i + 1);
+    }
   }
   printf("Total Score: %d\n", totScore);
 }
@@ -228,6 +228,6 @@ void flushStdin() {
   // Skip all characters until end-of-file marker
   // or new line / carriage return
   while ( (c = getchar()) != EOF &&
-          c != '\n' &&
-          c != '\r' ) {};
+  c != '\n' &&
+  c != '\r' ) {};
 }
