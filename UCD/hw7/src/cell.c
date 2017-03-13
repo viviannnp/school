@@ -39,10 +39,7 @@ bool Cell_AreNeighbors(Cell C1, Cell C2) {
       (C1.x == C2.x && C1.y + 1 == C2.y) || (C1.x == C2.x && C1.y - 1 == C2.y) ||
       (C1.x + 1 == C2.x && C1.y + 1 == C2.y) || (C1.x + 1 == C2.x && C1.y - 1 == C2.y) ||
       (C1.x - 1 == C2.x && C1.y + 1 == C2.y) || (C1.x - 1 == C2.x && C1.y - 1 == C2.y)) {
-
-      if (C1.s != C2.s) {
          return true;
-      }
    }
    return false;
 }
