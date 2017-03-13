@@ -11,10 +11,10 @@ gameboard* gameboard_create(int numRows, int numCols) {
   }
   // Homework TODO(COMPLETE): complete this function by adding code here
   gameboard* result = malloc(sizeof(gameboard));
-  result->squares = malloc(numRows * sizeof(result->squares));
+  result->squares = malloc(numRows * sizeof(square*));
 
   for (int i = 0; i < numRows; i++) {
-    result->squares[i] = malloc(numCols * sizeof(result->squares));
+    result->squares[i] = malloc(numCols * sizeof(square));
   }
   // keeping track of total rows and columns
   result->numRows = numRows;
