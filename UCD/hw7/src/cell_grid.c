@@ -115,22 +115,23 @@ void CellGrid_Print(const CellGrid* G, FILE* fp) {
       for (int j = 0; j < G->numCols; j++) {
          switch (G->grid[i][j].s) {
             case ON:
-               printf("O");
+               fprintf(stdout, "O");
                continue;
 
             case OFF:
-               printf(" ");
+               fprintf(stdout, " ");
                continue;
 
             case DYING:
-               printf("#");
+               fprintf(stdout, "#");
                continue;
 
             default:
-               printf("Something went wrong. Quitting...");
-               exit(0);
+               fprintf(stdout, " ");
+               continue;
          }
       }
       printf("\n");
    }
+   printf("Exit Print\n");
 }

@@ -53,13 +53,13 @@ bool Cell_AreNeighbors(Cell C1, Cell C2) {
 void Cell_NextState(Cell* C) {
    switch (C->s) {
       case OFF:
-      C->s = ON;
+         C->s = ON;
       break;
       case ON:
-      C->s = DYING;
+         C->s = DYING;
       break;
       case DYING:
-      C->s = OFF;
+         C->s = OFF;
       break;
    }
    return;
