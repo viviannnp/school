@@ -38,7 +38,13 @@ CellGrid* FirstGeneration(int numRows, int numCols, List* seedCells) {
 
 CellGrid* NextGeneration(CellGrid* generation) {
    // TODO: complete this function
-   
+   CellGrid* nextGeneration = generation;
+
+   for (int i = 0; i < generation->numRows; i++) {
+      for (int j = 0; j < generation->numCols; j++) {
+
+      }
+   }
 }
 
 /*
@@ -72,6 +78,23 @@ bool CellIsOn(CellGrid* generation, int row, int col) {
 List* GetNeighboringCells(Cell cell, CellGrid* generation) {
    // TODO: complete this function
    // Hint: Use List_Create to instantiate the list and List_PushFront to add elements to the list
+   List* neighbors = List_Create();
+
+   if (CellGrid_Inbounds(generation, cell.x, cell.y - 1)) {
+      for (int i = 1; i > -2 && CellGrid_Inbounds(generation, cell.x + i, cell.y - 1); i--) {
+         List_PushFront(neighbors, generation->grid[cell.x + i][cell.y - 1]);
+      }
+   }
+   if (CellGrid_Inbounds(generation, cell.x, cell.y + 1)) {
+      for (int i = 1; i > -2 && CellGrid_Inbounds(generation, cell.x + i, cell.y + 1); i--) {
+         List_PushFront(neighbors, generation->grid[cell.x + i][cell.y + 1]);
+      }
+   }
+   for (int i = 1; i > -2 && CellGrid_Inbounds(generation, cell.x + 1, cell.y); i--) {
+      List_PushFront(neighbors, generation->grid[cell.x + i][cell.y]);
+   }
+
+   return neighbors;
 }
 
 /*
