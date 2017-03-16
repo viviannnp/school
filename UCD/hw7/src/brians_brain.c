@@ -23,6 +23,7 @@ CellGrid* FirstGeneration(int numRows, int numCols, List* seedCells) {
    for (currentNode = seedCells->head; currentNode != NULL; currentNode = currentNode->next) {
       CellGrid_SetCell(result, currentNode->data);
    }
+   fprintf(stdout, "Test\n");
    return result;
 }
 
@@ -43,19 +44,20 @@ CellGrid* NextGeneration(CellGrid* generation) {
    int numCellsOn = 0;
 
    printf("Enter next-gen\n");
-   printf("x-pos: %d", generation->grid[0][0].x);
-   // for (int i = 0; i < generation->numRows; i++) {
-   //    for (int j = 0; j < generation->numCols; j++) {
-   //       tempOnList = GetNeighboringCells(generation->grid[i][j], generation);
-   //       numCellsOn = CountOnNeighborCells(generation, tempOnList);
-   //       if (numCellsOn >= 2 && generation->grid[i][j].s == OFF) {
-   //          Cell_NextState(&nextGeneration->grid[i][j]);
-   //       }
-   //       else {
-   //          Cell_NextState(&nextGeneration->grid[i][j]);
-   //       }
-   //    }
-   // }
+   for (int i = 0; i < generation->numRows; i++) {
+      for (int j = 0; j < generation->numCols; j++) {
+         tempOnList = GetNeighboringCells(generation->grid[i][j], generation);
+         numCellsOn = CountOnNeighborCells(generation, tempOnList);
+         if (numCellsOn >= 2 && generation->grid[i][j].s == OFF) {
+            Cell_NextState(&nextGeneration->grid[i][j]);
+         }
+         else {
+            Cell_NextState(&nextGeneration->grid[i][j]);
+         }
+      }
+   }
+   free(tempOnList);
+   printf("Return CellGrid\n");
    return nextGeneration;
 }
 
@@ -90,7 +92,6 @@ bool CellIsOn(CellGrid* generation, int row, int col) {
 List* GetNeighboringCells(Cell cell, CellGrid* generation) {
    // TODO: complete this function
    // Hint: Use List_Create to instantiate the list and List_PushFront to add elements to the list
-   printf("Enter get neighbor");
    List* neighbors = List_Create();
 
    if (CellGrid_Inbounds(generation, cell.x, cell.y - 1)) {
@@ -103,7 +104,7 @@ List* GetNeighboringCells(Cell cell, CellGrid* generation) {
          List_PushFront(neighbors, generation->grid[cell.x + i][cell.y + 1]);
       }
    }
-   for (int i = 1; i > -2 && CellGrid_Inbounds(generation, cell.x + 1, cell.y); i--) {
+   for (int i = 1; i > -2 && CellGrid_Inbounds(generation, cell.x + i, cell.y); i--) {
       List_PushFront(neighbors, generation->grid[cell.x + i][cell.y]);
    }
 

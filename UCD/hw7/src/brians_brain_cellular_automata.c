@@ -2,7 +2,7 @@
  * brians_brain_cellular_automata.c
  * Name / StudentID
  * A tester for brians_brain.h
- * Reads a seed (starting generation) from a file and runs 
+ * Reads a seed (starting generation) from a file and runs
  * Conways' Game of Life, printing to stdout
  */
 
@@ -27,7 +27,7 @@ int main(int argc, char* argv[]) {
     sleepTime.tv_nsec = 500000000L;
     if (argc != 3) {
         printf("Usage: %s <filename> <generations>\n", argv[0]);
-        exit(0); 
+        exit(0);
     }
     /* Get first generation Cells */
     fp = fopen(argv[1], "r");

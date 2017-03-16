@@ -37,6 +37,7 @@ void CellGrid_Delete(CellGrid* G) {
    for (int i = 0; i < G->numRows; i++) {
       free(G->grid[i]);
    }
+   free(G);
 }
 
 
@@ -108,9 +109,6 @@ bool CellGrid_Inbounds(const CellGrid* G, int row, int col) {
 */
 void CellGrid_Print(const CellGrid* G, FILE* fp) {
    // TODO(COMPLETE): complete this function
-   printf("In Print\n");
-   printf("numRows: %d\n",G->numRows );
-   printf("numCols: %d\n", G->numCols);
    for (int i = 0; i < G->numRows; i++) {
       for (int j = 0; j < G->numCols; j++) {
          switch (G->grid[i][j].s) {
@@ -133,5 +131,4 @@ void CellGrid_Print(const CellGrid* G, FILE* fp) {
       }
       printf("\n");
    }
-   printf("Exit Print\n");
 }
