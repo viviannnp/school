@@ -42,9 +42,10 @@ CellGrid* NextGeneration(CellGrid* generation) {
 
    for (int i = 0; i < generation->numRows; i++) {
       for (int j = 0; j < generation->numCols; j++) {
-
+         
       }
    }
+   return CellGrid*;
 }
 
 /*
@@ -55,7 +56,7 @@ CellGrid* NextGeneration(CellGrid* generation) {
 *      Returns true if the Cell is CellIsOn
 * Summary:
 *      Checks if coord is a valid index of *generation and
-*      its corresponding Cell is CellIsOn
+*      its corresponding Cell is CellIsOnbria
 */
 bool CellIsOn(CellGrid* generation, int row, int col) {
    if (!CellGrid_Inbounds(generation, row, col)) {
@@ -76,7 +77,7 @@ bool CellIsOn(CellGrid* generation, int row, int col) {
 *      returns them as a List
 */
 List* GetNeighboringCells(Cell cell, CellGrid* generation) {
-   // TODO: complete this function/
+   // TODO: complete this function
    // Hint: Use List_Create to instantiate the list and List_PushFront to add elements to the list
    List* neighbors = List_Create();
 
