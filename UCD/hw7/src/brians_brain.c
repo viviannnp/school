@@ -76,7 +76,7 @@ bool CellIsOn(CellGrid* generation, int row, int col) {
 *      returns them as a List
 */
 List* GetNeighboringCells(Cell cell, CellGrid* generation) {
-   // TODO: complete this function/
+   // TODO: complete this function
    // Hint: Use List_Create to instantiate the list and List_PushFront to add elements to the list
    List* neighbors = List_Create();
 
