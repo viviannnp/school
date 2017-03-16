@@ -42,9 +42,14 @@ CellGrid* NextGeneration(CellGrid* generation) {
 
    for (int i = 0; i < generation->numRows; i++) {
       for (int j = 0; j < generation->numCols; j++) {
-
+         generation -> grid[i][j].s;
+         CellGrid_GetState(CellGrid* generation, i, j);
+         //not done yet
+        
+               
       }
    }
+   return CellGrid*;
 }
 
 /*
