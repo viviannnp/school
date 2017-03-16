@@ -34,9 +34,6 @@ CellGrid* CellGrid_Create(int numRows, int numCols) {
 */
 void CellGrid_Delete(CellGrid* G) {
    // TODO: complete this function
-   for (int i = 0; i < G->numRows; i++) {
-      free(G->grid[i]);
-   }
    free(G);
 }
 

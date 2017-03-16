@@ -23,7 +23,6 @@ CellGrid* FirstGeneration(int numRows, int numCols, List* seedCells) {
    for (currentNode = seedCells->head; currentNode != NULL; currentNode = currentNode->next) {
       CellGrid_SetCell(result, currentNode->data);
    }
-   fprintf(stdout, "Test\n");
    return result;
 }
 
@@ -39,25 +38,27 @@ CellGrid* FirstGeneration(int numRows, int numCols, List* seedCells) {
 
 CellGrid* NextGeneration(CellGrid* generation) {
    // TODO: complete this function
-   CellGrid* nextGeneration = generation;
+   CellGrid* nextGeneration = CellGrid_Create(generation->numRows, generation->numCols);
    List* tempOnList = malloc(sizeof(List));
-   int numCellsOn = 0;
 
-   printf("Enter next-gen\n");
+   for (int i = 0; i < generation->numRows; i ++) {
+      for (int j = 0; j < generation->numCols; j++) {
+         CellGrid_SetCell(nextGeneration, generation->grid[i][j]);
+      }
+   }
+
    for (int i = 0; i < generation->numRows; i++) {
       for (int j = 0; j < generation->numCols; j++) {
          tempOnList = GetNeighboringCells(generation->grid[i][j], generation);
-         numCellsOn = CountOnNeighborCells(generation, tempOnList);
-         if (numCellsOn >= 2 && generation->grid[i][j].s == OFF) {
-            Cell_NextState(&nextGeneration->grid[i][j]);
+         if (CountOnNeighborCells(generation, tempOnList) >= 2 && generation->grid[i][j].s == OFF) {
+            generation->grid[i][j].s = ON;
          }
          else {
-            Cell_NextState(&nextGeneration->grid[i][j]);
+            CellGrid_Update(generation, i, j);
          }
       }
    }
    free(tempOnList);
-   printf("Return CellGrid\n");
    return nextGeneration;
 }
 
