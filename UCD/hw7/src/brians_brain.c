@@ -38,17 +38,29 @@ CellGrid* FirstGeneration(int numRows, int numCols, List* seedCells) {
 
 CellGrid* NextGeneration(CellGrid* generation) {
    // TODO: complete this function
-   CellGrid* nextGeneration = generation;
-
+   CellGrid* nextGeneration = CellGrid_Create(generation->numRows, generation->numCols);
+   int numLive;
+   Cell cell;
+   List* cellList;
    for (int i = 0; i < generation->numRows; i++) {
       for (int j = 0; j < generation->numCols; j++) {
-         generation -> grid[i][j].s;
-         CellGrid_GetState(CellGrid* generation, i, j);
-         //not done yet
-        
-               
+         //generation -> grid[i][j].s;
+         //CellGrid_GetState(CellGrid* generation, i, j)
+         cell = CellGrid_Create(i,j);
+         cellList = Neighboring_Cells(cell, generation);
+         numLive = LivingNeighbors(generation, cellList);
+         if(CellIsOn(generation, cell)){ /*or cell[i] and cell[j] or generation[i] and [j] or i and j, since countison needs three par*/
+            if((numLive == 2) || (numLive == 3)){
+               nextGeneration->data[i][j] = 1;
+            }
+         }
+         else {
+            if (numLive == 3){
+               nextGeneration->data[i][j] = 1;
+            }
+         }      
       }
-   }
+   } /*i think thihs could work??*/
    return CellGrid*;
 }
 
